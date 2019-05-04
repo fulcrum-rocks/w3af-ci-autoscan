@@ -1,7 +1,10 @@
 import sys
 import subprocess
+import os
 
 url = sys.argv[1]
+print('URL:', url)
+print('Creating script...')
 
 template = """
 #Configure HTTP settings
@@ -28,37 +31,28 @@ back
 
 #Configure vulnerability scanners
 ##Specify list of AUDIT plugins type to use
-audit blind_sqli, buffer_overflow, cors_origin, csrf, eval, file_upload,
-ldapi, lfi, os_commanding, phishing_vector, redos, response_splitting,
-sqli,
-xpath, xss, xst
+audit cors_origin, response_splitting, xpath, xss, xst
 ##Customize behavior of each audit plugin when needed
 audit config file_upload
-set extensions
-jsp,php,php2,php3,php4,php5,asp,aspx,pl,cfm,rb,py,sh,ksh,csh,bat,ps,exe
+set extensions jsp,php,php2,php3,php4,php5,asp,aspx,pl,cfm,rb,py,sh,ksh,csh,bat,ps,exe
 back
 
 ##Specify list of GREP plugins type to use (grep plugin is a type of
-plugin
-that can find also vulnerabilities or informations disclosure)
-grep analyze_cookies, click_jacking, code_disclosure, cross_domain_js,
-csp,
-directory_indexing, dom_xss, error_500, error_pages,
-html_comments, objects, path_disclosure, private_ip, strange_headers,
-strange_http_codes, strange_parameters, strange_reason, url_session,
-xss_protection_header
+#plugin
+#that can find also vulnerabilities or informations disclosure)
+grep analyze_cookies, click_jacking, code_disclosure, cross_domain_js, csp, directory_indexing, dom_xss, error_500, error_pages, html_comments, objects, path_disclosure, private_ip, strange_headers, strange_http_codes, strange_parameters, strange_reason, url_session, xss_protection_header
 
 
-##Specify list of INFRASTRUCTURE plugins type to use (infrastructure
-plugin
-is a type of plugin that can find informations disclosure)
-infrastructure server_header, server_status, domain_dot, dot_net_errors
-back
+#Specify list of INFRASTRUCTURE plugins type to use (infrastructure
+#plugins
+#is a type of plugin that can find informations disclosure)
+#infrastructure server_header, server_status, domain_dot, dot_net_errors
+#back
 
 #Configure reporting in order to generate an HTML report
-output console, html_file
-output config html_file
-set output_file /tmp/samir-W3afReport.html
+output console, xml_file
+output config xml_file
+set output_file /tmp/results/W3afReport.xml
 set verbose False
 back
 output config console
@@ -75,10 +69,13 @@ cleanup
 start
 
 exit
-exit
 """.format(url)
 
 with open("script.w3af", "w") as text_file:
     text_file.write(template)
+print('Run scanner...')
 
-subprocess.call(["./w3af_console", "-s", "script.w3af"])
+p = subprocess.run(["./w3af_console", "-s", "script.w3af"], stdout=subprocess.PIPE,
+    input='y\n', encoding='ascii')
+print('Scan complete')
+subprocess.call(["cat", "/tmp/results/W3afReport.xml"])
