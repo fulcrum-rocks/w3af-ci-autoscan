@@ -2,6 +2,10 @@ import sys
 import subprocess
 import os
 
+if len(sys.argv) < 2:
+    print('Error! URL is not specified!')
+    exit(1)
+
 url = sys.argv[1]
 print('URL:', url)
 print('Creating script...')
@@ -77,5 +81,4 @@ print('Run scanner...')
 
 p = subprocess.run(["./w3af_console", "-s", "script.w3af"], stdout=subprocess.PIPE,
     input='y\n', encoding='ascii')
-print('Scan complete')
 subprocess.call(["cat", "/tmp/results/W3afReport.xml"])
