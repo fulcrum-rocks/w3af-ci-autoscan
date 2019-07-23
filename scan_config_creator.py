@@ -35,7 +35,7 @@ back
 
 #Configure vulnerability scanners
 ##Specify list of AUDIT plugins type to use
-audit cors_origin, response_splitting, xpath, xss, xst
+audit cors_origin, response_splitting, xpath, xss, xst, sqli
 ##Customize behavior of each audit plugin when needed
 audit config file_upload
 set extensions jsp,php,php2,php3,php4,php5,asp,aspx,pl,cfm,rb,py,sh,ksh,csh,bat,ps,exe
@@ -44,7 +44,7 @@ back
 ##Specify list of GREP plugins type to use (grep plugin is a type of
 #plugin
 #that can find also vulnerabilities or informations disclosure)
-grep analyze_cookies, click_jacking, code_disclosure, cross_domain_js, csp, directory_indexing, dom_xss, error_500, error_pages, html_comments, objects, path_disclosure, private_ip, strange_headers, strange_http_codes, strange_parameters, strange_reason, url_session, xss_protection_header, sqli
+grep analyze_cookies, click_jacking, code_disclosure, cross_domain_js, csp, directory_indexing, dom_xss, error_500, error_pages, html_comments, objects, path_disclosure, private_ip, strange_headers, strange_http_codes, strange_parameters, strange_reason, url_session, xss_protection_header
 
 
 #Specify list of INFRASTRUCTURE plugins type to use (infrastructure
