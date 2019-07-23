@@ -44,7 +44,7 @@ back
 ##Specify list of GREP plugins type to use (grep plugin is a type of
 #plugin
 #that can find also vulnerabilities or informations disclosure)
-grep analyze_cookies, click_jacking, code_disclosure, cross_domain_js, csp, directory_indexing, dom_xss, error_500, error_pages, html_comments, objects, path_disclosure, private_ip, strange_headers, strange_http_codes, strange_parameters, strange_reason, url_session, xss_protection_header
+grep analyze_cookies, click_jacking, code_disclosure, cross_domain_js, csp, directory_indexing, dom_xss, error_500, error_pages, html_comments, objects, path_disclosure, private_ip, strange_headers, strange_http_codes, strange_parameters, strange_reason, url_session, xss_protection_header, sqli
 
 
 #Specify list of INFRASTRUCTURE plugins type to use (infrastructure
