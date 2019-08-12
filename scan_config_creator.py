@@ -56,7 +56,7 @@ grep analyze_cookies, click_jacking, code_disclosure, cross_domain_js, csp, dire
 #Configure reporting in order to generate an HTML report
 output console, xml_file
 output config xml_file
-set output_file /tmp/results/W3afReport.xml
+set output_file /W3afReport.xml
 set verbose False
 back
 output config console
@@ -81,4 +81,4 @@ print('Run scanner...')
 
 p = subprocess.run(["./w3af_console", "-s", "script.w3af"], stdout=subprocess.PIPE,
     input='y\n', encoding='ascii')
-subprocess.call(["cat", "/tmp/results/W3afReport.xml"])
+subprocess.call(["cat", "/W3afReport.xml"])
