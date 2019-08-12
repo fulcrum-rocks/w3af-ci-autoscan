@@ -7,8 +7,8 @@ if len(sys.argv) < 2:
     exit(1)
 
 url = sys.argv[1]
-print('URL:', url)
-print('Creating script...')
+# print('URL:', url)
+# print('Creating script...')
 
 template = """
 #Configure HTTP settings
@@ -77,7 +77,7 @@ exit
 
 with open("script.w3af", "w") as text_file:
     text_file.write(template)
-print('Run scanner...')
+# print('Run scanner...')
 
 p = subprocess.run(["./w3af_console", "-s", "script.w3af"], stdout=subprocess.PIPE,
     input='y\n', encoding='ascii')
