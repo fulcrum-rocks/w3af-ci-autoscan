@@ -35,7 +35,7 @@ back
 
 #Configure vulnerability scanners
 ##Specify list of AUDIT plugins type to use
-audit cors_origin, response_splitting, xpath, xss, xst, sqli
+audit cors_origin, response_splitting, xpath, xss, xst
 ##Customize behavior of each audit plugin when needed
 audit config file_upload
 set extensions jsp,php,php2,php3,php4,php5,asp,aspx,pl,cfm,rb,py,sh,ksh,csh,bat,ps,exe
