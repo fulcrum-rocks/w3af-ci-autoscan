@@ -6,4 +6,4 @@ USER root
 # Copy files
 COPY . . 
 
-ENTRYPOINT ["python3", "scan_config_creator.py"]
+ENTRYPOINT ["python3", "main.py"]
